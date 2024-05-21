@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout SCM
+                git url: 'https://github.com/your-repo.git'
             }
         }
         
@@ -16,7 +16,7 @@ pipeline {
         
         stage('Terraform Plan') {
             steps {
-                sh 'cd my-project && terraform plan -out=tfplan'
+                sh 'terraform plan -out=tfplan'
             }
         }
         
