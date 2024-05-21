@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main'
-                git url: 'https://github.com/Ashoksana/automation-deployment-gopu.git'
+                git branch: 'main', url: 'https://github.com/Ashoksana/automation-deployment-gopu.git'
             }
         }
         
