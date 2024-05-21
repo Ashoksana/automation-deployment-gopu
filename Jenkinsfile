@@ -2,15 +2,15 @@ pipeline {
     agent any
     
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/srigopu12/automation-deployment.git'
+                checkout SCM
             }
         }
         
         stage('Terraform Init') {
             steps {
-                sh 'cd my-project && terraform init -lock-timeout=10m'
+                sh 'terraform init -lock-timeout=10m'
             }
         }
         
@@ -22,13 +22,13 @@ pipeline {
         
         stage('Terraform Apply') {
             steps {
-                sh 'cd my-project && terraform apply -auto-approve tfplan'
+                sh 'terraform apply -auto-approve tfplan'
             }
         }
         
         stage('Ansible Provisioning') {
             steps {
-                sh 'cd my-project && ansible-playbook -i inventory playbook.yml'
+                sh 'ansible-playbook -i inventory playbook.yml'
             }
         }
     }
