@@ -10,7 +10,7 @@ pipeline {
         
         stage('Terraform Init') {
             steps {
-                sh 'terraform init -lock-timeout=10m'
+                sh 'terraform init'
             }
         }
         
